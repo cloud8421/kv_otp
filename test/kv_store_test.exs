@@ -5,6 +5,8 @@ defmodule KvStoreTest do
     {:ok, store} = KvStore.start_link
     assert :ok == KvStore.set(store, :foo, "bar")
     assert "bar" == KvStore.get(store, :foo)
+    assert :ok == KvStore.update(store, :foo, &String.upcase/1)
+    assert "BAR" == KvStore.get(store, :foo)
     assert :ok == KvStore.delete(store, :foo)
     assert nil == KvStore.get(store, :foo)
   end
