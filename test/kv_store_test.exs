@@ -2,12 +2,11 @@ defmodule KvStoreTest do
   use ExUnit.Case
 
   test "it stores data" do
-    {:ok, store} = KvStore.start_link
-    assert :ok == KvStore.set(store, :foo, "bar")
-    assert "bar" == KvStore.get(store, :foo)
-    assert :ok == KvStore.update(store, :foo, &String.upcase/1)
-    assert "BAR" == KvStore.get(store, :foo)
-    assert :ok == KvStore.delete(store, :foo)
-    assert nil == KvStore.get(store, :foo)
+    assert :ok == KvStore.set(:foo, "bar")
+    assert "bar" == KvStore.get(:foo)
+    assert :ok == KvStore.update(:foo, &String.upcase/1)
+    assert "BAR" == KvStore.get(:foo)
+    assert :ok == KvStore.delete(:foo)
+    assert nil == KvStore.get(:foo)
   end
 end
