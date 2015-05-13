@@ -8,7 +8,7 @@ defmodule KvOtp do
 
     children = [
       # Define workers and child supervisors to be supervised
-      worker(KvStore, [])
+      worker(KvStore, [name: KvStore])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

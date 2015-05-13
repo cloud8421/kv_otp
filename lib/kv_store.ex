@@ -21,8 +21,8 @@ defmodule KvStore do
 
   ## Callbacks
 
-  def start_link do
-    GenServer.start_link(__MODULE__, [])
+  def start_link({:name, name}) do
+    GenServer.start_link(__MODULE__, [], name: name)
   end
 
   def init([]) do
